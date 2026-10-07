@@ -8,7 +8,7 @@
 
 	echo showTime(), ' ', 'Job Logger started.', "\n";
 
-	EventQueue::get()->consumeEvents(function ($event) {
+	EventQueue::get()->consumeEvents('events.joblogger', function ($event) {
 		echo showTime(), ' ', 'Event: ', $event['event'], '(', json_encode($event['args']), ')', "\n";
 		// TODO: We probably want to check this less-often than every event.
 		checkDBAlive();
